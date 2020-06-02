@@ -1,0 +1,25 @@
+<ion-app [dir]="isRtl()">
+  <ion-split-pane>
+    <ion-menu type="overlay" dir="ltr" [side]="isArabic()?'end':'start'">
+      <ion-header no-border>
+        <ion-toolbar>
+          <ion-title [dir]="isRtl()" class="animated fadeIn">{{'menu'| translate}}</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle  auto-hide="false" *ngFor="let p of appPages">
+             
+            <ion-item [dir]="isRtl()" [routerDirection]="'root'" [routerLink]="[p.url]" class="animated fadeIn">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

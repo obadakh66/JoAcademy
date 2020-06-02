@@ -1,0 +1,269 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+
+@font-face {
+  font-family: "SF";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/SF-Pro-Display-Regular.otf");
+}
+@font-face {
+  font-family: "Cairo-Regular";
+  src: url("../assets/fonts/Cairo-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: "Cairo-Regular" !important;
+}
+
+@font-face {
+  font-family: "SF";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../assets/fonts/SF-Pro-Display-Bold.otf");
+}
+
+@font-face {
+  font-family: "SF";
+  font-style: italic;
+  font-weight: normal;
+  src: url("../assets/fonts/SF-Pro-Display-RegularItalic.otf");
+}
+
+@font-face {
+  font-family: "SF";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../assets/fonts/SF-Pro-Display-BoldItalic.otf");
+}
+
+@font-face {
+  font-family: "SFLight";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/SF-Pro-Display-Light.otf");
+}
+
+@font-face {
+  font-family: "SFUltraLight";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/SF-Pro-Display-Ultralight.otf");
+}
+
+@font-face {
+  font-family: "SFHeavy";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/SF-Pro-Display-Heavy.otf");
+}
+
+@font-face {
+  font-family: "SFBlack";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/SF-Pro-Display-Bold.otf");
+}
+
+:root {
+  /** primary **/
+  --ion-color-primary: rgb(255, 255, 255);
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: rgb(218, 218, 218);
+  --ion-color-primary-tint: rgb(255, 255, 255);
+
+  /** secondary **/
+  --ion-color-secondary: #1d8af0;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: rgb(28, 120, 206);
+  --ion-color-secondary-tint: rgb(60, 156, 246);
+
+  /** tertiary **/
+  --ion-color-tertiary: #9f86ff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: rgb(115, 95, 197);
+  --ion-color-tertiary-tint: #bcabff;
+
+  /** success **/
+  --ion-color-success: #1bc98e;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: rgb(14, 167, 73);
+  --ion-color-success-tint: #60d9b0;
+
+  /** warning **/
+  --ion-color-warning: #e4d836;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: rgb(202, 191, 41);
+  --ion-color-warning-tint: #ece473;
+
+  /** danger **/
+  --ion-color-danger: #e64759;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: rgb(177, 40, 40);
+  --ion-color-danger-tint: #ee7f8b;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  //SF THEME VARIABLES//
+  --ion-font-family: "SF";
+
+  * {
+    letter-spacing: 0.5px;
+  }
+
+  h1 {
+    font-size: 21px;
+  }
+
+  ion-card {
+    border-radius: 20px;
+    //box-shadow: 0 37.125px 70px -12.125px rgba(0,0,0,0.3);
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.2s ease, box-shadow 0.2s ease;
+    opacity: 1;
+    margin-bottom: 40px;
+  }
+
+  h2,
+  ion-card-title {
+    font-family: "SF";
+  }
+
+  h1,
+  ion-title {
+    color: #000;
+    font-family: "SFBlack";
+  }
+
+  ion-header {
+    border: none;
+  }
+  ion-toolbar {
+    -webkit-box-shadow: 0px 6px 6px 0px rgba(87, 86, 87, 0.65);
+    -moz-box-shadow: 0px 6px 6px 0px rgba(87, 86, 87, 0.65);
+    box-shadow: 1px 2px 6px 0px rgba(87, 86, 87, 0.26);
+  }
+  ion-button {
+    --border-radius: 20px;
+    margin: 10px;
+    border-radius: 20px !important  ;
+    -webkit-border-radius: 20px !important  ;
+    -moz-border-radius: 20px !important  ;
+    -ms-border-radius: 20px !important  ;
+    -o-border-radius: 20px !important  ;
+    background: none;
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .button-outline {
+    color: #000;
+    // border-color: #000;
+  }
+
+  p,
+  ion-card-subtitle,
+  li,
+  ion-card-content {
+    font-family: "SFLight";
+  }
+  ion-card-title {
+    font-size: 19px !important;
+  }
+  ion-item {
+    font-family: "SFLight";
+  }
+  * {
+    color: #4a4d4b !important;
+  }
+  ion-item {
+    --border-color: rgba(255, 255, 255, 0);
+  }
+}
+ion-input {
+  border: rgb(150, 150, 150) 1px solid;
+  border-radius: 15px;
+  padding: 10px;
+  width: auto;
+}
+/* .item-radio.item .sc-ion-select-popover-md {
+  color: red; //your color here
+}
+.item-radio-checked.item ion-label {
+  color: blue !important; //your color here for selected option
+} */
+:host {
+  --color: rgb(221, 20, 20) !important;
+  --color-checked: rgb(173, 29, 29) !important;
+  --border-width: 2px;
+  --border-style: red solid;
+  width: 20px;
+  height: 20px;
+}
+ion-select {
+  border: rgb(150, 150, 150) 1px solid !important;
+  border-radius: 15px !important;
+  padding: 10px !important;
+  width: auto !important;
+}
+.right-class {
+  float: right;
+  position: absolute;
+  right: 9px;
+  top: 15px;
+}
+.left-class {
+  float: left;
+  position: absolute;
+  left: 9px;
+  top: 15px;
+}
+.arabic-border {
+  border-right: var(--ion-color-success) 4px solid;
+  padding: 4px;
+}
+.english-border {
+  border-left: var(--ion-color-success) 4px solid;
+  padding: 4px;
+}
+.result-label {
+  font-size: x-large;
+  text-align: center;
+  color: var(--ion-color-success) !important;
+}

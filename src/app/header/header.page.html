@@ -1,0 +1,25 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="animated title fadeIn">
+     <span *ngIf="isRtl()">
+      {{title| translate}} <img *ngIf="url"  class="arabic-ahu-logo" src="assets/images/ahu-logo.png"/>
+     </span> 
+     <span *ngIf="!isRtl()">
+      {{title| translate}} <img *ngIf="url" class="english-ahu-logo" src="assets/images/ahu-logo.png"/>
+     </span> 
+    </ion-title>
+    <span [class]="isRtl()?'left-class':'right-class'" (click)="openSelect()">
+      <img class="country-flag" [src]="isRtl()?'assets/images/jordan.jpg':'assets/images/usa.png'" />
+    </span>
+  </ion-toolbar>
+</ion-header>
+<ion-select okText="{{'Okay'| translate}}" cancelText="{{'dismiss'| translate}}" #mySelect
+  (ionChange)="changeLang(mySelect.value)" hidden>
+  <ion-select-option value="ar">
+    <img class="country-flag" src="assets/images/jordan.jpg" /> العربية
+  </ion-select-option>
+  <ion-select-option value="en">English</ion-select-option>
+</ion-select>

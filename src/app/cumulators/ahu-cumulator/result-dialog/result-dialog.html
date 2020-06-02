@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-button (click)="dismiss()" color="accent">
+            <ion-icon name="md-close"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row class="animated fadeInLeft delay-1s" style="justify-content: center;
+    margin-top: 15%;">
+        <img style="width: 50%;" src="assets/images/success-check.png" />
+    </ion-row>
+    <ion-row style="justify-content: center;" padding>
+
+        <h1 class="animated fadeInLeft delay-1s">
+            {{ 'yourAvgIs' | translate }}
+        </h1>
+
+    </ion-row>
+    <ion-row style="justify-content: center;" class="welcome-card animated fadeInLeft delay-1s">
+        <ion-label class="result-label">{{result}} %</ion-label>
+    </ion-row>
+    <ion-row style="justify-content: center;border-bottom: #80808040 1px solid;" class="welcome-card animated fadeInLeft delay-1s">
+        <ion-label *ngIf="result <= 50" class="result-label">{{ 'advice1' | translate }}</ion-label>
+        <ion-label *ngIf="result > 50 && result <= 60" class="result-label">{{ 'advice2' | translate }}</ion-label>
+        <ion-label *ngIf="result > 60 && result <= 70" class="result-label">{{ 'advice3' | translate }}</ion-label>
+        <ion-label *ngIf="result > 70 && result <= 80" class="result-label">{{ 'advice4' | translate }}</ion-label>
+        <ion-label *ngIf="result > 80 && result <= 90" class="result-label">{{ 'advice5' | translate }}</ion-label>
+        <ion-label *ngIf="result > 90 && result <= 99" class="result-label">{{ 'advice6' | translate }}</ion-label>
+    </ion-row>
+
+   <!--  <ion-row style="justify-content: center;" class="welcome-card animated fadeInLeft delay-1s">
+        <ion-col size="6">
+           <ion-label style="border-bottom: #80808040 1px solid;
+           margin-top: 9px;
+           position: absolute;
+           margin-left: 14px;">{{ 'shareYourResult' | translate }}</ion-label>
+        </ion-col> 
+        <ion-col size="3">
+            <ion-button color="success" style="color: white !important;">
+                <ion-icon style="color: white !important;" slot="icon-only" name="logo-whatsapp"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col size="3">
+            <ion-button color="secondary" style="color: white !important;">
+                <ion-icon style="color: white !important;" slot="icon-only" name="logo-facebook"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row> -->
+</ion-content>

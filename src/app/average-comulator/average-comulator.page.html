@@ -1,0 +1,21 @@
+
+<app-header [title]="'avgCumulator'"></app-header>
+<ion-content>
+ 
+  <ion-row padding>
+
+    <h1 class="animated fadeInLeft delay-1s">
+      {{ 'chooseYourUniversity' | translate }}
+    </h1>
+
+  </ion-row>
+  <ion-card (click)="navigateToAhu()" class="welcome-card animated fadeInLeft delay-1s slow">
+    <ion-img src="/assets/images/ahu.png"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle style="text-align: center;"></ion-card-subtitle>
+      <ion-card-title style="text-align: center;">{{ 'ahuUniversity' | translate }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+
+</ion-content>
