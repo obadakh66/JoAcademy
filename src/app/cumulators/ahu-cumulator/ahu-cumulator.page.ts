@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonContent, LoadingController, ModalController } from '@ionic/angular';
 import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { LanguageService } from 'src/app/services/language.service';
-import { ModalPage } from './result-dialog/result-dialog';
+import { ModalPage } from '../result-dialog/result-dialog';
 
 const form_template = [
   {
@@ -46,7 +46,7 @@ export class AhuCumulatorPage implements OnInit {
   @ViewChild('IonContent') ionContent: IonContent;
   dynamicForm: FormGroup;
   mainNumbersForm: FormGroup = new FormGroup({
-    currentGpa: new FormControl('', Validators.required),
+    currentGpa: new FormControl('', [Validators.required,Validators.max(100)]),
     noOfHoursIncluded: new FormControl('', Validators.required)
   });
 
@@ -60,8 +60,8 @@ export class AhuCumulatorPage implements OnInit {
   addCourse() {
     this.courses.push(this.courses[this.courses.length - 1] + 1)
     for (let i = 1; i < this.courses.length; i++) {
-      this.dynamicForm.addControl("expectedCourseNo" + i.toString(), new FormControl())
-      this.dynamicForm.addControl("noOfHoursCourseNo" + i.toString(), new FormControl())
+      this.dynamicForm.addControl("expectedCourseNo" + i.toString(), new FormControl('', [Validators.required]))
+      this.dynamicForm.addControl("noOfHoursCourseNo" + i.toString(), new FormControl(Validators.required))
       this.dynamicForm.addControl("statusOfCourseNo" + i.toString(), new FormControl())
       this.dynamicForm.addControl("previousMarkCourseNo" + i.toString(), new FormControl())
     }
@@ -90,7 +90,8 @@ export class AhuCumulatorPage implements OnInit {
       component: ModalPage,
       cssClass: 'my-custom-class',
       componentProps: {
-        'result': this.avgResult
+        'result': this.avgResult.toString(),
+        'avgType':1
       }
     });
     return await modal.present();
@@ -109,40 +110,54 @@ export class AhuCumulatorPage implements OnInit {
     return this.langService.isArabic()
   }
   calculate() {
-    this.presentLoading();
-    console.log(this.dynamicForm.value)
-    for (let course = 0; course < this.courses.length; course++) {
-      if (this.dynamicForm.controls["statusOfCourseNo" + course].value == true || this.dynamicForm.controls["statusOfCourseNo" + course].value == null) {//new
-        let multiplyValue = (this.dynamicForm.controls["expectedCourseNo" + course].value) * (this.dynamicForm.controls["noOfHoursCourseNo" + course].value)
-        this.coursesSum.push(multiplyValue)
-        this.hoursSum.push(this.dynamicForm.controls["noOfHoursCourseNo" + course].value)
+    Object.keys(this.dynamicForm.controls).forEach(key => {
+      if (!this.dynamicForm.get(key).value) {
+        this.dynamicForm.get(key).markAsTouched();
       }
-      if (this.dynamicForm.controls["statusOfCourseNo" + course].value == false) {//not new
-        let multiplyValue =
-          ((this.dynamicForm.controls["expectedCourseNo" + course].value) -
-            (this.dynamicForm.controls["previousMarkCourseNo" + course].value)) *
-          (this.dynamicForm.controls["noOfHoursCourseNo" + course].value)
-        this.coursesSum.push(multiplyValue)
+    });
+    Object.keys(this.mainNumbersForm.controls).forEach(key => {
+      if (!this.mainNumbersForm.get(key).value) {
+        this.mainNumbersForm.get(key).markAsTouched();
       }
+    });
+    if (this.dynamicForm.valid && this.mainNumbersForm.valid) {
+      this.presentLoading();
+      console.log(this.dynamicForm.value)
+      for (let course = 0; course < this.courses.length; course++) {
+        if (this.dynamicForm.controls["statusOfCourseNo" + course].value == true || this.dynamicForm.controls["statusOfCourseNo" + course].value == null) {//new
+          let multiplyValue = (this.dynamicForm.controls["expectedCourseNo" + course].value) * (this.dynamicForm.controls["noOfHoursCourseNo" + course].value)
+          this.coursesSum.push(multiplyValue)
+          this.hoursSum.push(this.dynamicForm.controls["noOfHoursCourseNo" + course].value)
+        }
+        if (this.dynamicForm.controls["statusOfCourseNo" + course].value == false) {//not new
+          let multiplyValue =
+            ((this.dynamicForm.controls["expectedCourseNo" + course].value) -
+              (this.dynamicForm.controls["previousMarkCourseNo" + course].value)) *
+            (this.dynamicForm.controls["noOfHoursCourseNo" + course].value)
+          this.coursesSum.push(multiplyValue)
+        }
+      }
+      var totalCourseSum = 0;
+      this.coursesSum.forEach(element => {
+        totalCourseSum += element;
+      });
+      var totalHoursSum = 0;
+      this.hoursSum.forEach(element => {
+        totalHoursSum += element;
+      });
+      //course1+course2+course3+course4+(course5);
+      //let totalAvg=totalCourseSum/totalHoursSum
+      //total
+      let totalAvg = ((this.currentGpa.value * this.noOfHoursIncluded.value) + totalCourseSum) / (this.noOfHoursIncluded.value + totalHoursSum)
+      console.log(totalAvg)
+      this.avgResult = totalAvg;
     }
-
-
-    //current semister
-    console.log(this.coursesSum)
-    console.log(this.hoursSum)
-    var totalCourseSum = 0;
-    this.coursesSum.forEach(element => {
-      totalCourseSum += element;
-    });
-    var totalHoursSum = 0;
-    this.hoursSum.forEach(element => {
-      totalHoursSum += element;
-    });
-    //course1+course2+course3+course4+(course5);
-    //let totalAvg=totalCourseSum/totalHoursSum
-    //total
-    let totalAvg = ((this.currentGpa.value * this.noOfHoursIncluded.value) + totalCourseSum) / (this.noOfHoursIncluded.value + totalHoursSum)
-    console.log(totalAvg)
-    this.avgResult = totalAvg;
+  }
+  checkFormControlValidaty(name, id) {
+    let formControl = this.dynamicForm.controls[name + id.toString()];
+    if (!formControl.value && formControl.touched) {
+      return true;
+    }
+    return false;
   }
 }

@@ -1,0 +1,120 @@
+<app-header [title]="'yuCumulator'" [url]="'exist'" [uniId]="5"></app-header>
+
+
+<ion-content #IonContent>
+  <form [formGroup]="mainNumbersForm">
+    <ion-card class="course-card">
+      <ion-row class="course-row">
+        <ion-col class="label-col" size="4">
+          <ion-label>{{ 'currentGpa' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-input formControlName="currentGpa" type="number" placeholder="{{ 'enterValue' | translate }}">
+          </ion-input>
+          <ion-label class="error-label" color="danger" *ngIf="currentGpa.touched &&currentGpa.hasError('required')">
+            {{ 'required' | translate }}
+          </ion-label>
+          <ion-label class="error-label" color="danger"
+          *ngIf="currentGpa.touched &&currentGpa.hasError('max')">
+          {{ 'maximumValueisFour' | translate }}
+        </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="course-row">
+        <ion-col class="label-col" size="4">
+          <ion-label>{{ 'noOfHoursIncluded' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-input formControlName="noOfHoursIncluded" type="number" placeholder="{{ 'enterValue' | translate }}">
+          </ion-input>
+          <ion-label class="error-label" color="danger" *ngIf="noOfHoursIncluded.touched &&noOfHoursIncluded.hasError('required')">
+            {{ 'required' | translate }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </form>
+
+  <form [formGroup]="dynamicForm">
+    <ion-card class="course-card" *ngFor="let course of courses">
+      <ion-row class="course-row">
+        <ion-label>{{ 'courseNumber' | translate }} {{course+1}}</ion-label>
+      </ion-row>
+      <ion-row class="course-row">
+        <ion-col class="label-col" size="4">
+          <ion-label>{{ 'expected' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-input [formControlName]="'expectedCourseNo'+course.toString()" type="number"
+            placeholder="{{ 'enterValue' | translate }}">
+          </ion-input>
+          <ion-label class="error-label" color="danger" *ngIf="checkFormControlValidaty('expectedCourseNo',course)">
+            {{ 'required' | translate }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="course-row">
+        <ion-col class="label-col" size="4">
+          <ion-label>{{ 'noOfHours' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-input [formControlName]="'noOfHoursCourseNo'+course.toString()" type="number"
+            placeholder="{{ 'enterValue' | translate }}">
+          </ion-input>
+          <ion-label class="error-label" color="danger" *ngIf="checkFormControlValidaty('noOfHoursCourseNo',course)">
+            {{ 'required' | translate }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="course-row">
+        <ion-col class="label-col" size="4">
+          <ion-label>{{ 'statusOfCourse' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-select placeholder="{{ 'enterValue' | translate }}"
+            [formControlName]="'statusOfCourseNo'+course.toString()" [value]="true" #country [interfaceOptions]=""
+            interface="popover">
+            <ion-select-option (color)="success" [value]="true">
+              {{ 'new' | translate }}</ion-select-option>
+            <ion-select-option (color)="success" [value]="false">
+              {{ 'repeated' | translate }}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row class="course-row">
+        <ion-col class="label-col" size="4">
+          <ion-label>{{ 'previousMark' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-input [formControlName]="'previousMarkCourseNo'+course.toString()" type="number"
+            placeholder="{{ 'enterValue' | translate }}"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button *ngIf="course==this.courses[this.courses.length-1]" (click)="addCourse()" style="color: white;"
+            color="success">
+            {{ 'addCourse' | translate }}
+            <ion-icon style="color: white !important;" name="md-add"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="removeCourse(course)" style="color: white;" color="danger">
+            {{ 'remove' | translate }}
+            <ion-icon style="color: white !important;" name="md-close"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+
+
+      </ion-row>
+    </ion-card>
+  </form>
+  <ion-row>
+    <ion-button [disabled]="dynamicForm.invalid" expand="full" (click)="calculate()" style="color: white;width: 100%;" color="success">
+      {{ 'calculate' | translate }}
+      <ion-icon style="color: white !important;" name="md-close"></ion-icon>
+    </ion-button>
+  </ion-row>
+
+</ion-content>

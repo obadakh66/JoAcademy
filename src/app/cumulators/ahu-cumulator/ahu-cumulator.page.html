@@ -1,4 +1,4 @@
-<app-header [title]="'ahuCumulator'" [url]="'exist'"></app-header>
+<app-header [title]="'ahuCumulator'" [url]="'exist'" [uniId]="1"></app-header>
 
 
 <ion-content #IonContent>
@@ -11,6 +11,13 @@
         <ion-col size="8">
           <ion-input formControlName="currentGpa" type="number" placeholder="{{ 'enterValue' | translate }}">
           </ion-input>
+          <ion-label class="error-label" color="danger" *ngIf="currentGpa.touched &&currentGpa.hasError('required')">
+            {{ 'required' | translate }}
+          </ion-label>
+          <ion-label class="error-label" color="danger"
+          *ngIf="currentGpa.touched &&currentGpa.hasError('max')">
+          {{ 'maximumValueisFour' | translate }}
+        </ion-label>
         </ion-col>
       </ion-row>
       <ion-row class="course-row">
@@ -20,11 +27,9 @@
         <ion-col size="8">
           <ion-input formControlName="noOfHoursIncluded" type="number" placeholder="{{ 'enterValue' | translate }}">
           </ion-input>
-        </ion-col>
-      </ion-row> 
-      <ion-row>
-        <ion-col class="label-col-warning">
-          <ion-label style="color: orange !important;">{{ 'requiredNote' | translate }}</ion-label>
+          <ion-label class="error-label" color="danger" *ngIf="noOfHoursIncluded.touched &&noOfHoursIncluded.hasError('required')">
+            {{ 'required' | translate }}
+          </ion-label>
         </ion-col>
       </ion-row>
     </ion-card>
@@ -43,6 +48,9 @@
           <ion-input [formControlName]="'expectedCourseNo'+course.toString()" type="number"
             placeholder="{{ 'enterValue' | translate }}">
           </ion-input>
+          <ion-label class="error-label" color="danger" *ngIf="checkFormControlValidaty('expectedCourseNo',course)">
+            {{ 'required' | translate }}
+          </ion-label>
         </ion-col>
       </ion-row>
       <ion-row class="course-row">
@@ -53,6 +61,9 @@
           <ion-input [formControlName]="'noOfHoursCourseNo'+course.toString()" type="number"
             placeholder="{{ 'enterValue' | translate }}">
           </ion-input>
+          <ion-label class="error-label" color="danger" *ngIf="checkFormControlValidaty('noOfHoursCourseNo',course)">
+            {{ 'required' | translate }}
+          </ion-label>
         </ion-col>
       </ion-row>
       <ion-row class="course-row">
@@ -60,8 +71,6 @@
           <ion-label>{{ 'statusOfCourse' | translate }}</ion-label>
         </ion-col>
         <ion-col size="8">
-          <!--  <ion-input [formControlName]="'statusOfCourseNo'+course.toString()" type="number" placeholder="{{ 'enterValue' | translate }}">
-          </ion-input> -->
           <ion-select placeholder="{{ 'enterValue' | translate }}"
             [formControlName]="'statusOfCourseNo'+course.toString()" [value]="true" #country [interfaceOptions]=""
             interface="popover">
@@ -102,7 +111,7 @@
     </ion-card>
   </form>
   <ion-row>
-    <ion-button expand="full" (click)="calculate()" style="color: white;width: 100%;" color="success">
+    <ion-button [disabled]="dynamicForm.invalid" expand="full" (click)="calculate()" style="color: white;width: 100%;" color="success">
       {{ 'calculate' | translate }}
       <ion-icon style="color: white !important;" name="md-close"></ion-icon>
     </ion-button>

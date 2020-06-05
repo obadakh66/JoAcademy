@@ -1,14 +1,14 @@
 <ion-header no-border>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+  <ion-toolbar style="height: 65px;">
+    <ion-buttons slot="start" >
+      <ion-menu-button [dir]="isRtl()"></ion-menu-button>
     </ion-buttons>
     <ion-title class="animated title fadeIn">
-     <span *ngIf="isRtl()">
-      {{title| translate}} <img *ngIf="url"  class="arabic-ahu-logo" src="assets/images/ahu-logo.png"/>
+     <span *ngIf="isRtl()" [style.fontSize]="uniId!=0?'15px':'21px'">
+      {{title| translate}} <img *ngIf="url"  [class]="'arabic-'+imageClass+'-logo'" [src]="uniLogo"/>
      </span> 
-     <span *ngIf="!isRtl()">
-      {{title| translate}} <img *ngIf="url" class="english-ahu-logo" src="assets/images/ahu-logo.png"/>
+     <span *ngIf="!isRtl()" style="font-size: 15px;">
+      {{title| translate}} <img *ngIf="url" [class]="'english-'+imageClass+'-logo'" [src]="uniLogo"/>
      </span> 
     </ion-title>
     <span [class]="isRtl()?'left-class':'right-class'" (click)="openSelect()">

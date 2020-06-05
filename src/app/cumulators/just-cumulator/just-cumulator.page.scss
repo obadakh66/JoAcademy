@@ -1,0 +1,23 @@
+.label-col {
+    padding-top: 16px;
+}
+.course-row {
+    margin-bottom: 5px;
+    border-bottom: #80808040 1px solid;
+}
+.course-card {
+    border-radius: 0 !important;
+    padding: 5px;
+}
+.label-col-warning {
+    padding-top: 16px;
+    font-weight: bold;
+    color: orange !important;
+    text-align: center;
+}
+.my-custom-class {
+    --background: #222;
+    --spinner-color: #fff;
+  
+    color: #fff;
+  }

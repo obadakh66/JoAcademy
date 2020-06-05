@@ -1,6 +1,6 @@
 <ion-app [dir]="isRtl()">
   <ion-split-pane>
-    <ion-menu type="overlay" dir="ltr" [side]="isArabic()?'end':'start'">
+    <ion-menu type="overlay" [dir]="isRtl()" [side]="isArabic()?'end':'start'">
       <ion-header no-border>
         <ion-toolbar>
           <ion-title [dir]="isRtl()" class="animated fadeIn">{{'menu'| translate}}</ion-title>

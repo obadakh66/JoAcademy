@@ -18,15 +18,14 @@
 
     </ion-row>
     <ion-row style="justify-content: center;" class="welcome-card animated fadeInLeft delay-1s">
-        <ion-label class="result-label">{{result}} %</ion-label>
+        <ion-label class="result-label">{{percentageAvg}} % {{ 'percentage' | translate }}</ion-label>
+    </ion-row>
+     <ion-row style="justify-content: center;" class="welcome-card animated fadeInLeft delay-1s">
+        <ion-label class="result-label">{{numberAvg}} / 4.00 {{ 'score' | translate }}</ion-label>
     </ion-row>
     <ion-row style="justify-content: center;border-bottom: #80808040 1px solid;" class="welcome-card animated fadeInLeft delay-1s">
-        <ion-label *ngIf="result <= 50" class="result-label">{{ 'advice1' | translate }}</ion-label>
-        <ion-label *ngIf="result > 50 && result <= 60" class="result-label">{{ 'advice2' | translate }}</ion-label>
-        <ion-label *ngIf="result > 60 && result <= 70" class="result-label">{{ 'advice3' | translate }}</ion-label>
-        <ion-label *ngIf="result > 70 && result <= 80" class="result-label">{{ 'advice4' | translate }}</ion-label>
-        <ion-label *ngIf="result > 80 && result <= 90" class="result-label">{{ 'advice5' | translate }}</ion-label>
-        <ion-label *ngIf="result > 90 && result <= 99" class="result-label">{{ 'advice6' | translate }}</ion-label>
+        <ion-label class="result-label">{{ 'advice'+checkResultString() | translate }}</ion-label>
+     
     </ion-row>
 
    <!--  <ion-row style="justify-content: center;" class="welcome-card animated fadeInLeft delay-1s">

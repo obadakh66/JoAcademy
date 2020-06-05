@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import {IonicModule} from '@ionic/angular';
 import { HeaderPage } from './header/header.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { ModalPage } from './cumulators/result-dialog/result-dialog';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import { TranslateModule } from '@ngx-translate/core';
         IonicModule,
         TranslateModule.forChild()
     ],
-    declarations: [HeaderPage],
-    exports: [HeaderPage]
+    declarations: [HeaderPage,ModalPage],
+    entryComponents:[ModalPage],
+    exports: [HeaderPage,ModalPage]
 })
 export class SharedModule {}

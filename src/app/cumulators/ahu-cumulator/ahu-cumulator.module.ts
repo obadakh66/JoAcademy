@@ -7,9 +7,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { AhuCumulatorPage } from './ahu-cumulator.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { ModalPage } from './result-dialog/result-dialog';
 import { HeaderPageModule } from 'src/app/header/header.module';
 import { SharedModule } from 'src/app/shared.module';
+import { ModalPage } from '../result-dialog/result-dialog';
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AhuCumulatorPage,ModalPage],
-  entryComponents:[ModalPage]
+  declarations: [AhuCumulatorPage],
+  entryComponents:[]
 })
 export class AhuCumulatorPageModule {}
