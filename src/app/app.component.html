@@ -17,7 +17,7 @@
             </ion-item>
           </ion-menu-toggle> -->
           <ion-menu-toggle auto-hide="false">
-            <ion-item [routerDirection]="'root'" routerLink="/ahu-cumulator" class="animated fadeIn">
+            <ion-item [routerDirection]="'root'" [routerLink]="['/avg-comulator']" class="animated fadeIn">
               <ion-icon slot="start" name="school"></ion-icon>
               <ion-label>
                 {{'chooseYourUniversity'| translate}}
@@ -41,10 +41,10 @@
               <ion-label>
                 {{'avgCalculator'| translate}}
               </ion-label>
-            </ion-item>
+            </ion-item> 
           </ion-menu-toggle> -->
           <ion-menu-toggle auto-hide="false">
-            <ion-item [routerDirection]="'root'" routerLink="/ahu-cumulator" class="animated fadeIn">
+            <ion-item [routerDirection]="'root'" [routerLink]="['/avg-comulator']" class="animated fadeIn">
               <ion-icon slot="start" name="school"></ion-icon>
               <ion-label>
                 {{'chooseYourUniversity'| translate}}
