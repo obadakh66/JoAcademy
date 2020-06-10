@@ -1,19 +1,53 @@
 <ion-app [dir]="isRtl()">
   <ion-split-pane>
-    <ion-menu type="overlay" [dir]="isRtl()" [side]="isArabic()?'end':'start'">
+    <ion-menu *ngIf="isArabic()" type="overlay" dir="rtl" side="end">
       <ion-header no-border>
         <ion-toolbar>
-          <ion-title [dir]="isRtl()" class="animated fadeIn">{{'menu'| translate}}</ion-title>
+          <ion-title class="animated fadeIn">{{'menu'| translate}}</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle  auto-hide="false" *ngFor="let p of appPages">
-             
-            <ion-item [dir]="isRtl()" [routerDirection]="'root'" [routerLink]="[p.url]" class="animated fadeIn">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+          <!--  <ion-menu-toggle  auto-hide="false">             
+            <ion-item [routerDirection]="'root'" routerLink="/ahu-cumulator" class="animated fadeIn">
+              <ion-icon slot="start" name="calculator"></ion-icon>
               <ion-label>
-                {{p.title}}
+                {{'avgCalculator'| translate}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerDirection]="'root'" routerLink="/ahu-cumulator" class="animated fadeIn">
+              <ion-icon slot="start" name="school"></ion-icon>
+              <ion-label>
+                {{'chooseYourUniversity'| translate}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-menu *ngIf="!isArabic()" type="overlay" dir="ltr" side="start">
+      <ion-header no-border>
+        <ion-toolbar>
+          <ion-title class="animated fadeIn">{{'menu'| translate}}</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <!--  <ion-menu-toggle  auto-hide="false">             
+            <ion-item [routerDirection]="'root'" routerLink="/ahu-cumulator" class="animated fadeIn">
+              <ion-icon slot="start" name="calculator"></ion-icon>
+              <ion-label>
+                {{'avgCalculator'| translate}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerDirection]="'root'" routerLink="/ahu-cumulator" class="animated fadeIn">
+              <ion-icon slot="start" name="school"></ion-icon>
+              <ion-label>
+                {{'chooseYourUniversity'| translate}}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
