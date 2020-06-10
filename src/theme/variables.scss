@@ -75,7 +75,15 @@
   --ion-color-primary-contrast: #000000;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: rgb(218, 218, 218);
-  --ion-color-primary-tint: rgb(255, 255, 255);
+  --ion-color-primary-tint: rgb(255, 255, 255); 
+  
+  /** primary **/
+  --ion-color-whatsapp: #25d366;
+  --ion-color-whatsapp-rgb: 56, 128, 255;
+  --ion-color-whatsapp-contrast: #000000;
+  --ion-color-whatsapp-contrast-rgb: 255, 255, 255;
+  --ion-color-whatsapp-shade: rgb(218, 218, 218);
+  --ion-color-whatsapp-tint: rgb(255, 255, 255);
 
   /** secondary **/
   --ion-color-secondary: #1d8af0;
@@ -86,12 +94,12 @@
   --ion-color-secondary-tint: rgb(60, 156, 246);
 
   /** tertiary **/
-  --ion-color-tertiary: #9f86ff;
+  --ion-color-tertiary: #25d366;
   --ion-color-tertiary-rgb: 112, 68, 255;
-  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast: #25d366;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
   --ion-color-tertiary-shade: rgb(115, 95, 197);
-  --ion-color-tertiary-tint: #bcabff;
+  --ion-color-tertiary-tint: #25d366;
 
   /** success **/
   --ion-color-success: #165974;

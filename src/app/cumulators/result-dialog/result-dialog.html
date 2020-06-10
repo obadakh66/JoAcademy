@@ -8,7 +8,7 @@
 <ion-content>
     <ion-row class="animated fadeInLeft delay-1s" style="justify-content: center;
     margin-top: 15%;">
-        <img style="width: 50%;" src="assets/images/success-check.png" />
+        <img style="width: 38%;" src="assets/images/success-check.png" />
     </ion-row>
     <ion-row style="justify-content: center;" padding>
 
@@ -28,22 +28,26 @@
      
     </ion-row>
 
-   <!--  <ion-row style="justify-content: center;" class="welcome-card animated fadeInLeft delay-1s">
-        <ion-col size="6">
+    <ion-row style="justify-content: center;" class="welcome-card animated fadeInLeft delay-1s">
            <ion-label style="border-bottom: #80808040 1px solid;
            margin-top: 9px;
-           position: absolute;
            margin-left: 14px;">{{ 'shareYourResult' | translate }}</ion-label>
-        </ion-col> 
+    </ion-row> 
+    <ion-row style="justify-content: center;" class="welcome-card animated fadeInLeft delay-1s">
         <ion-col size="3">
-            <ion-button color="success" style="color: white !important;">
+            <ion-button shape="round" (click)="shareWhatsapp()" color="tertiary" style="color: white !important;">
                 <ion-icon style="color: white !important;" slot="icon-only" name="logo-whatsapp"></ion-icon>
             </ion-button>
         </ion-col>
         <ion-col size="3">
-            <ion-button color="secondary" style="color: white !important;">
+            <ion-button shape="round" (click)="shareFacebook()" color="secondary" style="color: white !important;">
                 <ion-icon style="color: white !important;" slot="icon-only" name="logo-facebook"></ion-icon>
             </ion-button>
+        </ion-col> 
+        <ion-col size="3">
+            <ion-button shape="round" (click)="shareInstagram()" color="danger" style="color: white !important;">
+                <ion-icon style="color: white !important;" slot="icon-only" name="logo-instagram"></ion-icon>
+            </ion-button>
         </ion-col>
-    </ion-row> -->
+    </ion-row>
 </ion-content>
