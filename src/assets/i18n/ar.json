@@ -83,5 +83,7 @@
     "bauCumulator":"البلقاء التطبيقية",
     "bauUniversity":"جامعة البلقاء التطبيقية",
     "mutahCumulator":"جامعة مؤتة",
-    "mutahUniversity":"جامعة مؤتة"
+    "mutahUniversity":"جامعة مؤتة",
+    "3digitsAllowed":"يسمح فقط ب3 خانات",
+    "maximumValueis100":"اعلى قيمة لهذا الحقل هي 100"
 }

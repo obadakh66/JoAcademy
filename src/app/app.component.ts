@@ -1,11 +1,13 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 
-import { Platform, IonRouterOutlet, AlertController } from '@ionic/angular';
+import { Platform, IonRouterOutlet, AlertController, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { LanguageService } from './services/language.service';
+import { FcmService } from './services/fcm.service';
+import { Firebase } from '@ionic-native/firebase/ngx';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +37,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     public translate: TranslateService,
     public router: Router,
+    private firebase: Firebase,
+    public toastCtrl: ToastController,
     public alertController: AlertController,
     public langService: LanguageService,
     private statusBar: StatusBar
@@ -49,9 +53,44 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.langService.getLanguage()
-
+      this.initializeFirebase();
     });
 
+  }
+  initializeFirebase() {
+    this.firebase.subscribe("all");
+    this.platform.is('android') ? this.initializeFirebaseAndroid() : this.initializeFirebaseIOS();
+  }
+  initializeFirebaseAndroid() {
+    this.firebase.getToken().then(token => { });
+    this.firebase.onTokenRefresh().subscribe(token => { })
+    this.subscribeToPushNotifications();
+  }
+  initializeFirebaseIOS() {
+    this.firebase.grantPermission()
+      .then(() => {
+        this.firebase.getToken().then(token => { });
+        this.firebase.onTokenRefresh().subscribe(token => { })
+        this.subscribeToPushNotifications();
+      })
+      .catch((error) => {
+        this.firebase.logError(error);
+      });
+  }
+  subscribeToPushNotifications() {
+    this.firebase.onNotificationOpen().subscribe(async (response) => {
+      if (response.tap) {
+        //Received while app in background (this should be the callback when a system notification is tapped)
+        //This is empty for our app since we just needed the notification to open the app
+      } else {
+        //received while app in foreground (show a toast)
+        const toast = await this.toastCtrl.create({
+          message: response.body,
+          duration: 3000
+        });
+        toast.present();
+      }
+    });
   }
   backButtonEvent() {
     this.platform.backButton.subscribeWithPriority(0, () => {
@@ -72,12 +111,12 @@ export class AppComponent implements OnInit {
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       // header: 'Confirm!',
-      message: this.isArabic()?'':'Are you sure you want to exit the app?',
+      message: this.isArabic() ? '' : 'Are you sure you want to exit the app?',
       buttons: [{
         text: 'Cancel',
         role: 'cancel',
         cssClass: 'secondary',
-        handler: (blah) => {}
+        handler: (blah) => { }
       }, {
         text: 'Close App',
         handler: () => {
@@ -85,7 +124,7 @@ export class AppComponent implements OnInit {
         }
       }]
     });
-  
+
     await alert.present();
   }
   isRtl() {

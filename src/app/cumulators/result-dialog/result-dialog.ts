@@ -42,7 +42,7 @@ export class ModalPage implements OnInit {
   shareFacebook() {
     this.socialSharing.shareViaFacebook(this.langService.isArabic() ? `معدلي التراكمي الجامعي على تطبيق جو اكاديمي هو :   ${this.percentageAvg} %` : 
     `My GPA on (JoAcademy) app is :  ${this.percentageAvg} %`,
-    null,
+    'null',
     "https://play.google.com/store/apps/details?id=io.joacademy.studentapp");
   } 
   shareInstagram() {

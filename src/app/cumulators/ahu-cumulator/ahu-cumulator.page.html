@@ -14,10 +14,9 @@
           <ion-label class="error-label" color="danger" *ngIf="currentGpa.touched &&currentGpa.hasError('required')">
             {{ 'required' | translate }}
           </ion-label>
-          <ion-label class="error-label" color="danger"
-          *ngIf="currentGpa.touched &&currentGpa.hasError('max')">
-          {{ 'maximumValueisFour' | translate }}
-        </ion-label>
+          <ion-label class="error-label" color="danger" *ngIf="currentGpa.touched &&currentGpa.hasError('max')">
+            {{ 'maximumValueis100' | translate }}
+          </ion-label>
         </ion-col>
       </ion-row>
       <ion-row class="course-row">
@@ -25,10 +24,14 @@
           <ion-label>{{ 'noOfHoursIncluded' | translate }}</ion-label>
         </ion-col>
         <ion-col size="8">
-          <ion-input formControlName="noOfHoursIncluded" type="number" placeholder="{{ 'enterValue' | translate }}">
+          <ion-input formControlName="noOfHoursIncluded" type="number" onKeyPress="if(this.value.length==3) return false;" placeholder="{{ 'enterValue' | translate }}">
           </ion-input>
-          <ion-label class="error-label" color="danger" *ngIf="noOfHoursIncluded.touched &&noOfHoursIncluded.hasError('required')">
+         <ion-label class="error-label" color="danger"
+            *ngIf="noOfHoursIncluded.touched &&noOfHoursIncluded.hasError('required')">
             {{ 'required' | translate }}
+          </ion-label>
+          <ion-label class="error-label" color="danger" *ngIf="noOfHoursIncluded.errors?.maxlength">
+            {{ '3digitsAllowed' | translate }}
           </ion-label>
         </ion-col>
       </ion-row>
@@ -110,8 +113,9 @@
       </ion-row>
     </ion-card>
   </form>
-  <ion-row>
-    <ion-button [disabled]="dynamicForm.invalid" expand="full" (click)="calculate()" style="color: white;width: 100%;" color="success">
+ <ion-row class="calculate-btn">
+    <ion-button [disabled]="dynamicForm.invalid" expand="full" (click)="calculate()" style="color: white;width: 100%;"
+      color="success">
       {{ 'calculate' | translate }}
       <ion-icon style="color: white !important;" name="calculator"></ion-icon>
     </ion-button>

@@ -48,7 +48,7 @@ export class BauCumulatorPage implements OnInit {
   dynamicForm: FormGroup;
   mainNumbersForm: FormGroup = new FormGroup({
     currentGpa: new FormControl('', [Validators.required,Validators.max(4.00)]),
-    noOfHoursIncluded: new FormControl('', Validators.required)
+    noOfHoursIncluded: new FormControl('', [Validators.required,Validators.maxLength(3)])
   });
 
   get currentGpa() {
@@ -59,14 +59,16 @@ export class BauCumulatorPage implements OnInit {
   }
   formTemplate: any = form_template;
   addCourse() {
-    this.courses.push(this.courses[this.courses.length - 1] + 1)
-    for (let i = 1; i < this.courses.length; i++) {
-      this.dynamicForm.addControl("expectedCourseNo" + i.toString(), new FormControl())
-      this.dynamicForm.addControl("noOfHoursCourseNo" + i.toString(), new FormControl())
-      this.dynamicForm.addControl("statusOfCourseNo" + i.toString(), new FormControl())
-      this.dynamicForm.addControl("previousMarkCourseNo" + i.toString(), new FormControl())
+    if(this.courses.length<9){
+      this.courses.push(this.courses[this.courses.length - 1] + 1)
+      for (let i = 1; i < this.courses.length; i++) {
+        this.dynamicForm.addControl("expectedCourseNo" + i.toString(), new FormControl('', [Validators.required]))
+        this.dynamicForm.addControl("noOfHoursCourseNo" + i.toString(), new FormControl(Validators.required))
+        this.dynamicForm.addControl("statusOfCourseNo" + i.toString(), new FormControl())
+        this.dynamicForm.addControl("previousMarkCourseNo" + i.toString(), new FormControl())
+      }
+      this.scrollToBottom()
     }
-    this.scrollToBottom()
   }
   scrollToBottom() {
     setTimeout(() => {
@@ -104,12 +106,14 @@ export class BauCumulatorPage implements OnInit {
   }
 
   removeCourse(course) {
-    this.courses = this.courses.filter(x => x != course)
-    this.dynamicForm.removeControl("expectedCourseNo" + course.toString())
-    this.dynamicForm.removeControl("noOfHoursCourseNo" + course.toString())
-    this.dynamicForm.removeControl("statusOfCourseNo" + course.toString())
-    this.dynamicForm.removeControl("previousMarkCourseNo" + course.toString())
-    console.log(this.dynamicForm.value)
+    if(this.courses.length>1){
+      this.courses = this.courses.filter(x => x != course)
+      this.dynamicForm.removeControl("expectedCourseNo" + course.toString())
+      this.dynamicForm.removeControl("noOfHoursCourseNo" + course.toString())
+      this.dynamicForm.removeControl("statusOfCourseNo" + course.toString())
+      this.dynamicForm.removeControl("previousMarkCourseNo" + course.toString())
+      console.log(this.dynamicForm.value)
+    }
 
   }
   isArabic() {

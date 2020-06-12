@@ -83,5 +83,7 @@
     "bauCumulator": "BAU Calculator",
     "bauUniversity": "Balqaa Applied University",
     "mutahCumulator": "Mutah Calculator",
-    "mutahUniversity": "Mutah University"
+    "mutahUniversity": "Mutah University",
+    "3digitsAllowed":"Just 3 digits allowed",
+    "maximumValueis100":"Maximum value is 100"
 }
