@@ -75,7 +75,10 @@ export class AppComponent implements OnInit {
       } else {
         console.log('Received in foreground');
       }
-    });
+    });    
+    this.fcm.onTokenRefresh().subscribe(token => {
+      console.log(token);
+    });  
   }/*
   initializeFirebaseAndroid() {
     this.firebase.getToken().then(token => { });

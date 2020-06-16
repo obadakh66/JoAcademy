@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "820347745051",
+    "firebase_url": "https://joacademy-62f81.firebaseio.com",
+    "project_id": "joacademy-62f81",
+    "storage_bucket": "joacademy-62f81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820347745051:android:685804b0dbcea635a659be",
+        "android_client_info": {
+          "package_name": "io.joacademy.studentapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820347745051-m9un89vlksl0momuikmn3hm6uescqi85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBESC89_HG9eJI1eQ18AJxIl4SFMpd58iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820347745051-m9un89vlksl0momuikmn3hm6uescqi85.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
