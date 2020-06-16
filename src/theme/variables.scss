@@ -70,20 +70,20 @@
 
 :root {
   /** primary **/
-  --ion-color-primary: rgb(255, 255, 255);
+  --ion-color-primary: #4a4d4b;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #000000;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: rgb(218, 218, 218);
-  --ion-color-primary-tint: rgb(255, 255, 255); 
-  
+  --ion-color-primary-tint: #4a4d4b;
+
   /** primary **/
   --ion-color-whatsapp: #25d366;
   --ion-color-whatsapp-rgb: 56, 128, 255;
   --ion-color-whatsapp-contrast: #000000;
   --ion-color-whatsapp-contrast-rgb: 255, 255, 255;
   --ion-color-whatsapp-shade: rgb(218, 218, 218);
-  --ion-color-whatsapp-tint: rgb(255, 255, 255);
+  --ion-color-whatsapp-tint: #4a4d4b;
 
   /** secondary **/
   --ion-color-secondary: #1d8af0;
@@ -153,7 +153,7 @@
   --ion-font-family: "SF";
 
   * {
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
   }
 
   h1 {
@@ -275,14 +275,14 @@ ion-select {
   text-align: center;
   color: var(--ion-color-success) !important;
 }
-ion-icon{
+ion-icon {
   color: var(--ion-color-success) !important;
 }
-.error-label{
+.error-label {
   color: var(--ion-color-danger) !important;
-  transition: .5s;
+  transition: 0.5s;
 }
-.main-menu{
+.main-menu {
   background-image: url(../assets/images/1.PNG);
   background-repeat: repeat;
   -webkit-background-size: cover;
@@ -291,11 +291,16 @@ ion-icon{
   height: 100%;
   position: absolute;
 }
-.calculate-btn{
+.calculate-btn {
   position: fixed;
-    bottom: 0;
-    width: -webkit-fill-available;
-    background: white;
-    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
-    z-index: 9;
+  bottom: 0;
+  width: -webkit-fill-available;
+  background: white;
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+  z-index: 9;
+}
+:host {
+  --color: #999;
+  --color-checked: rgb(199, 41, 41) !important;
+  --highlight-color-focused: rgb(230, 16, 16) !important;
 }

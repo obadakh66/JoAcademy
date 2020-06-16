@@ -4,7 +4,26 @@
 <ion-content #IonContent>
   <form [formGroup]="mainNumbersForm">
     <ion-card class="course-card">
+      <ion-row style="justify-content: center;">
+        <ion-label style="text-align: center;">
+          {{ 'calculationMethod' | translate }}
+        </ion-label>
+      </ion-row>
       <ion-row class="course-row">
+        <ion-col>
+          <ion-button style="width: -webkit-fill-available;" [color]="calculationType == 1 ? 'success' : 'light'"
+            (click)="calculationType = 1">
+            {{ 'semisterAverage' | translate }}
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button style="width: -webkit-fill-available;" [color]="calculationType == 2 ? 'success' : 'light'"
+            (click)="calculationType = 2">
+            {{ 'totalAverage' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="course-row" *ngIf="calculationType==2">
         <ion-col class="label-col" size="4">
           <ion-label>{{ 'currentGpa' | translate }}</ion-label>
         </ion-col>
@@ -20,7 +39,7 @@
         </ion-label>
         </ion-col>
       </ion-row>
-      <ion-row class="course-row">
+      <ion-row class="course-row" *ngIf="calculationType==2">
         <ion-col class="label-col" size="4">
           <ion-label>{{ 'noOfHoursIncluded' | translate }}</ion-label>
         </ion-col>

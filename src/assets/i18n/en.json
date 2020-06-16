@@ -85,5 +85,8 @@
     "mutahCumulator": "Mutah Calculator",
     "mutahUniversity": "Mutah University",
     "3digitsAllowed":"Just 3 digits allowed",
-    "maximumValueis100":"Maximum value is 100"
+    "maximumValueis100":"Maximum value is 100",
+    "semisterAverage":"Semister Average",
+    "totalAverage":"GPA",
+    "calculationMethod":"Calculation Method"
 }

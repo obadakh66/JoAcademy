@@ -85,5 +85,8 @@
     "mutahCumulator":"جامعة مؤتة",
     "mutahUniversity":"جامعة مؤتة",
     "3digitsAllowed":"يسمح فقط ب3 خانات",
-    "maximumValueis100":"اعلى قيمة لهذا الحقل هي 100"
+    "maximumValueis100":"اعلى قيمة لهذا الحقل هي 100",
+    "semisterAverage":"المعدل الفصلي",
+    "totalAverage":"المعدل التراكمي",
+    "calculationMethod":"طريقة الحساب"
 }

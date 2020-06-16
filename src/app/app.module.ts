@@ -12,12 +12,11 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LanguageService } from './services/language.service';
-
+import { FCM } from '@ionic-native/fcm/ngx'
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { Firebase } from '@ionic-native/firebase/ngx';
-import { FcmService } from './services/fcm.service';
+
 
 const config = {
   apiKey: "AIzaSyBqeutHFcU-jnEiubvNltcXmgZv0cF3Lm4",
@@ -54,7 +53,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    Firebase,
+    FCM,
     LanguageService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

@@ -6,8 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { LanguageService } from './services/language.service';
-import { FcmService } from './services/fcm.service';
-import { Firebase } from '@ionic-native/firebase/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-root',
@@ -37,8 +37,9 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     public translate: TranslateService,
     public router: Router,
-    private firebase: Firebase,
     public toastCtrl: ToastController,
+    private fcm: FCM,
+    public firestore: AngularFirestore,
     public alertController: AlertController,
     public langService: LanguageService,
     private statusBar: StatusBar
@@ -53,14 +54,29 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.langService.getLanguage()
+      this.fcm.getToken().then(token => {
+        console.log(token);
+        this.createUser(token)
+      });
       this.initializeFirebase();
     });
 
   }
-  initializeFirebase() {
-    this.firebase.subscribe("all");
-    this.platform.is('android') ? this.initializeFirebaseAndroid() : this.initializeFirebaseIOS();
+  createUser(token){
+    return this.firestore.collection('User').doc().set({
+      token
+    });
   }
+   initializeFirebase() {
+    this.fcm.onNotification().subscribe(data => {
+      console.log(data);
+      if (data.wasTapped) {
+        console.log('Received in background');
+      } else {
+        console.log('Received in foreground');
+      }
+    });
+  }/*
   initializeFirebaseAndroid() {
     this.firebase.getToken().then(token => { });
     this.firebase.onTokenRefresh().subscribe(token => { })
@@ -91,7 +107,7 @@ export class AppComponent implements OnInit {
         toast.present();
       }
     });
-  }
+  } */
   backButtonEvent() {
     this.platform.backButton.subscribeWithPriority(0, () => {
       this.routerOutlets.forEach(async (outlet: IonRouterOutlet) => {
