@@ -190,7 +190,7 @@ var UojCumulatorPage = /** @class */ (function () {
         return false;
     };
     tslib_1.__decorate([
-        ViewChild('IonContent'),
+        ViewChild('IonContent',{static:true}),
         tslib_1.__metadata("design:type", IonContent)
     ], UojCumulatorPage.prototype, "ionContent", void 0);
     UojCumulatorPage = tslib_1.__decorate([

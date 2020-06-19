@@ -65,12 +65,12 @@ export class HeaderPage implements OnInit {
       }
     }
   }
-  @ViewChild('mySelect') selectRef: IonSelect;
+  @ViewChild('mySelect',{static:true}) selectRef: IonSelect;
   openSelect() {
     this.selectRef.interface = "action-sheet"
     this.selectRef.open();
   }
-  isRtl() {
+  isRtl() { 
     return this.langService.isArabic();
   }
 

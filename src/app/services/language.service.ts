@@ -7,7 +7,7 @@ export class LanguageService {
   constructor(private translate: TranslateService) {
 
   }
-
+ 
   setLang(lang) {
     localStorage.setItem("lang" , lang)
     this.translate.use(lang);

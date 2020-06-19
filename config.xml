@@ -4,7 +4,7 @@
     <description>JoAcademy / Educational App</description>
     <author email="contact@obadaalkhdor.com" href="http://obadaalkhdor.com/">Obada Alkhdor</author>
     <content src="index.html" />
-    <access origin="*" />
+    <access origin="*" /> 
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

@@ -45,7 +45,7 @@ export class UojCumulatorPage implements OnInit {
       previousMarkCourseNo0: new FormControl()
     })
   }
-  @ViewChild('IonContent') ionContent: IonContent;
+  @ViewChild('IonContent',{static:true}) ionContent: IonContent;
   dynamicForm: FormGroup;
   mainNumbersForm: FormGroup = new FormGroup({
     currentGpa: new FormControl('', [Validators.required, Validators.max(4.00)]),

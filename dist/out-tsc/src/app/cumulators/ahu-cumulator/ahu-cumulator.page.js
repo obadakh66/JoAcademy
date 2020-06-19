@@ -190,7 +190,7 @@ var AhuCumulatorPage = /** @class */ (function () {
         return false;
     };
     tslib_1.__decorate([
-        ViewChild('IonContent'),
+        ViewChild('IonContent',{static:true}),
         tslib_1.__metadata("design:type", IonContent)
     ], AhuCumulatorPage.prototype, "ionContent", void 0);
     AhuCumulatorPage = tslib_1.__decorate([

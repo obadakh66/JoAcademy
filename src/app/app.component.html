@@ -1,6 +1,6 @@
 <ion-app [dir]="isRtl()">
-  <ion-split-pane>
-    <ion-menu *ngIf="isArabic()" type="overlay" dir="rtl" side="end">
+  <ion-split-pane contentId="main">
+    <ion-menu contentId="main" *ngIf="isArabic()" type="overlay" dir="rtl" side="end">
       <ion-header no-border>
         <ion-toolbar>
           <ion-title class="animated fadeIn">{{'menu'| translate}}</ion-title>
@@ -51,9 +51,9 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </ion-list>
+        </ion-list> 
       </ion-content>
     </ion-menu>
-    <ion-router-outlet main></ion-router-outlet>
-  </ion-split-pane>
+    <ion-router-outlet id="main" main></ion-router-outlet>
+  </ion-split-pane> 
 </ion-app>

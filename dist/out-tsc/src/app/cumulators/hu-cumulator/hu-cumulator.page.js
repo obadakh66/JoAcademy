@@ -190,7 +190,7 @@ var HuCumulatorPage = /** @class */ (function () {
         return false;
     };
     tslib_1.__decorate([
-        ViewChild('IonContent'),
+        ViewChild('IonContent',{static:true}),
         tslib_1.__metadata("design:type", IonContent)
     ], HuCumulatorPage.prototype, "ionContent", void 0);
     HuCumulatorPage = tslib_1.__decorate([
